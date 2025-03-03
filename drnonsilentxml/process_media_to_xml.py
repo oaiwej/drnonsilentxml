@@ -1,5 +1,4 @@
 import os
-import argparse
 from xml.etree.ElementTree import Element, SubElement, Comment, tostring, indent, ElementTree
 from typing import List, Dict, Optional
 from pydub import AudioSegment, silence
@@ -11,15 +10,15 @@ from drnonsilentxml.utils.frames import frames
 IN = 0
 OUT = 1
 
-def process_audio_to_xml(input_file: str, output_file: str, 
+def process_media_to_xml(input_file: str, output_file: str, 
                          input_fps: float, output_fps: float, 
                          silence_thresh: int = -40,
                          padding_ms: int = 300) -> None:
     """
-    Process an audio file, detect non-silent segments, and generate XML for video editing.
+    Process an audio/media file, detect non-silent segments, and generate XML for video editing.
     
     Args:
-        input_file: Path to the audio input file
+        input_file: Path to the audio/media input file
         output_file: Path for XML output file
         input_fps: Input frames per second
         output_fps: Output frames per second
@@ -32,6 +31,7 @@ def process_audio_to_xml(input_file: str, output_file: str,
 
     root = Element('xmeml', {'version': '5'})
     sound = AudioSegment.from_file(filename)
+
 
     start_ms = 0
     vclipitems = []
@@ -194,3 +194,4 @@ def process_audio_to_xml(input_file: str, output_file: str,
             '',
         ])).encode('utf8'))
         tree.write(f, encoding="utf-8")
+

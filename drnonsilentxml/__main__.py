@@ -1,15 +1,15 @@
 import argparse
-from drnonsilentxml.nonsilent_xml import process_audio_to_xml
+from drnonsilentxml.process_media_to_xml import process_media_to_xml
 
 def main():
     """
     Main entry point for the drnonsilentxml application.
     """
     parser = argparse.ArgumentParser(
-        description="Convert audio file to non-silent XML segments for video editing"
+        description="Convert audio/media file to non-silent XML segments for video editing"
     )
     parser.add_argument("-i", "--input", type=str, required=True, 
-                        help="Input audio file path")
+                        help="Input audio/media file path")
     parser.add_argument("-if", "--input-fps", type=float, required=True, default=60,
                         help="Input frames per second")
     parser.add_argument("-o", "--output", type=str, required=True,
@@ -23,7 +23,7 @@ def main():
     
     args = parser.parse_args()
     
-    process_audio_to_xml(
+    process_media_to_xml(
         input_file=args.input,
         output_file=args.output,
         input_fps=args.input_fps,
