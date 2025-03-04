@@ -51,18 +51,20 @@
 
 1. リポジトリをクローンします：
 
-```bash
-git clone https://github.com/oaiwej/drnonsilentxml.git DRNonSilentXML
-cd DRNonSilentXML
-```
+    ```powershell
+    git clone https://github.com/oaiwej/drnonsilentxml.git DRNonSilentXML
+    cd DRNonSilentXML
+    ```
 
 2. 依存パッケージをインストールします：
 
-```bash
-pip install -r requirements.txt
-```
+    ```powershell
+    py -3.11 -m venv venv
+    venv\Scripts\Activate.ps1
+    pip install -r requirements.txt
+    ```
 
-3. ffmpegにパスを通すか、フォルダ直下にffmpeg.exeを配置します。
+3. フォルダ直下に **ffmpeg.exe** と **ffprobe.exe** 配置するか、パスを通してください。
 
 
 ## 使い方
@@ -71,13 +73,13 @@ pip install -r requirements.txt
 
 以下のようなコマンドを実行して、無音カット編集用の XML タイムラインを生成します：
 
-```bash
+```powershell
 python drnonsilentxml.py -i "input.mp4" -if 30 -o "output.xml" -of 29.97
 ```
 
 <br>
 
-また、`silence_cut_xml.bat` に動画ファイル(複数ファイル可)をドラッグ＆ドロップすることで、簡単に無音カット編集用の XML タイムラインを生成できます。60FPS->59.94FPSに設定されているので、適宜編集してください。
+または、`silence_cut_xml.bat` に動画ファイル(複数ファイル可)をドラッグ＆ドロップすることで、簡単に無音カット編集用の XML タイムラインを生成できます。60FPS->59.94FPSに設定されているので、適宜編集してください。
 
 ### Davinci Resolveでの読み込み方法
 
@@ -86,5 +88,5 @@ python drnonsilentxml.py -i "input.mp4" -if 30 -o "output.xml" -of 29.97
 1. 読み込まれたタイムラインは何故かモノラルになってしまうので、ステレオにする場合は以下の手順を実行してください。
     1. タイムラインのクリップをすべて選択
     1. クリップを右クリック > クリップ属性 > 音声タブ
-    1. フォーマットをStereoに変更
+    1. フォーマットを`Stereo`に変更
 
