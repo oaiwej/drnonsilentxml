@@ -184,7 +184,8 @@ def process_media_to_xml(input_file: str, output_file: str,
         ])
     ])
     indent(root, space="\t", level=0)
-    print(tostring(root))
+    # print(tostring(root))
+    
     # ファイルに書き込み
     tree = ElementTree(root)
     with open(output_file, mode='wb') as f:
